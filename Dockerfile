@@ -2,7 +2,6 @@ FROM alpine:latest
 
 ENV ADMINER_VERSION 4.3.1
 
-
 ENV UID 1000
 ENV USER htpc
 ENV GROUP htpc
