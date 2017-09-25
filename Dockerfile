@@ -8,6 +8,7 @@ ENV USER htpc
 ENV GROUP htpc
 
 RUN addgroup -S ${GROUP} && adduser -D -S -u ${UID} ${USER} ${GROUP} && \
+    echo "@community http://dl-4.alpinelinux.org/alpine/latest-stable/community/" >> /etc/apk/repositories && \
     apk update && apk upgrade && \
     apk add --no-cache \
         wget \
