@@ -15,7 +15,8 @@ RUN addgroup -S ${GROUP} && adduser -D -S -u ${UID} ${USER} ${GROUP} && \
         ca-certificates \
         php7@community \
         php7-session \
-        php7-mysqli && \
+        php7-mysqli 
+        pdo_mysql pdo_pgsql pdo_sqlite && \
     wget https://github.com/vrana/adminer/releases/download/v${ADMINER_VERSION}/adminer-${ADMINER_VERSION}.php -O /srv/index.php && \
     apk del wget ca-certificates && \
 
