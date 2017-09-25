@@ -19,7 +19,7 @@ RUN addgroup -S ${GROUP} && adduser -D -S -u ${UID} ${USER} ${GROUP} && \
     wget https://github.com/vrana/adminer/releases/download/v${ADMINER_VERSION}/adminer-${ADMINER_VERSION}.php -O /srv/index.php && \
     apk del wget ca-certificates && \
 
-WORKDIR srv
+WORKDIR /srv/
 
 EXPOSE 80
 
