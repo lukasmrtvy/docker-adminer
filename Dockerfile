@@ -3,6 +3,7 @@ FROM alpine:latest
 ENV ADMINER_VERSION 4.3.1
 
 ENV UID 1000
+ENV GID 1000
 ENV USER htpc
 ENV GROUP htpc
 
@@ -15,14 +16,20 @@ RUN addgroup -S ${GROUP} && adduser -D -S -u ${UID} ${USER} ${GROUP} && \
         php7@community \
         php7-session \
         php7-mysqli \
-        php7-pdo_mysql php7-pdo_pgsql php7-pdo_sqlite && \
+        php7-pdo_mysql \
+        php7-pdo_pgsql \
+        php7-pdo_sqlite && \
     wget https://github.com/vrana/adminer/releases/download/v${ADMINER_VERSION}/adminer-${ADMINER_VERSION}.php -O /srv/index.php && \
+    chown -R ${USER}:${GROUP}  /srv/  && \
     apk del wget ca-certificates 
 
 WORKDIR /srv/
 
-EXPOSE 80
+EXPOSE 8080
+
+LABEL url=https://api.github.com/repos/vrana/adminer/releases/latest
+LABEL version=${ADMINER_VERSION}
 
 USER ${USER}
 
-CMD /usr/bin/php -S 0.0.0.0:80
+CMD /usr/bin/php -S 0.0.0.0:8080
