@@ -27,7 +27,7 @@ WORKDIR /srv/
 
 EXPOSE 8080
 
-LABEL url=https://api.github.com/repos/vrana/adminer/releases/latest
+LABEL url=https://api.github.com/repos/vrana/adminer/
 LABEL version=${ADMINER_VERSION}
 
 USER ${USER}
